@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Welcome to the Book Library Index page</h1>
+	<a th:href="@{/addBook}">here</a> to add a new book!
+	<br><br><br>
+	<form th:action="@{/search}" method="get">
+		<label>Search for books by any word in title: </label> 
+		<input type="text" name="title"> 
+		<input type="submit" value="search for books">
+	</form>
+</body>
+</html>
