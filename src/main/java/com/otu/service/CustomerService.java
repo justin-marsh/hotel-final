@@ -20,7 +20,7 @@ public class CustomerService {
 	}
 
 	
-	public boolean createCustomer(Customer customer) {
+	public boolean addCustomer(Customer customer) {
 		if(!repo.existsById(customer.getId())) {
 			System.out.println("creating customer");
 			repo.save(customer);

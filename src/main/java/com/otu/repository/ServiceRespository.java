@@ -1,5 +1,5 @@
 package com.otu.repository;
-
+/*
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -17,3 +17,4 @@ public interface ServiceRespository extends JpaRepository<ProvidedService, Long>
 	List<ProvidedService> findByName(@Param("name") String name);
 	
 }
+*/

@@ -22,25 +22,25 @@ public class CustomerController {
 		this.service = service;
 	}
 
-	@GetMapping("/CreateCustomer")
+	@GetMapping("/addCustomer")
 	public String addCustomer(Model model) {
 		model.addAttribute("customer", new Customer());
 		
 		return "add-book-page";
 	}
 	
-	@PostMapping("/processCreateCustomer")
-	public String processCreateCustomer(Customer customer, Model model) {
+	@PostMapping("/processAddCustomer")
+	public String processAddCustomer(Customer customer, Model model) {
 		
 		System.out.println(customer);
 		//View    Controller    Service      Repository    DB
-		boolean CustomerCreated = service.createCustomer(customer);
+		boolean CustomerCreated = service.addCustomer(customer);
 		
 		if(CustomerCreated) {
-			model.addAttribute("bookName", customer.getName());
+			model.addAttribute("name", customer.getName());
 			return "book-created";
 		} else {
-			return "redirect:/addBook";
+			return "redirect:/addCustomer";
 		}		
 	}
 	
