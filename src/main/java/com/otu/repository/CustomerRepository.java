@@ -11,7 +11,7 @@ import com.otu.model.Customer;
 public interface CustomerRepository extends JpaRepository<Customer, Long>{
 	
 	//boolean existsByIdAndName(Long id, String name);
-	boolean existsByName(String name);
+	boolean existsById(Long id);
 	
 	
 	@Query("select c from Customer c where upper(c.name) like concat('%', upper(:name), '%')")

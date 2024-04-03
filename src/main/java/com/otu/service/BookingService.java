@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import com.otu.model.Booking;
 import com.otu.repository.BookingRepository;
 import com.otu.service.CustomerService;
-import com.otu.service.RoomService
 
 @Service
 public class BookingService {
@@ -21,15 +20,15 @@ public class BookingService {
 	}
 
 	
-	public boolean addBooking(Booking booking) {
-		if(!repo.existsByRoomId(booking.getRoomId()) && CustomerService.validCustomer(booking.getCustomerId()) && RoomService.validRoom(booking.getRoomId())) {
-			System.out.println("NOT EXIST");
-			repo.save(booking);
-			return true;
-		}
-		System.out.println("EXIST");
-		return false;
-	}
+//	public boolean addBooking(Booking booking) {
+//		if(!repo.existsByRoomId(booking.getRoomId()) && CustomerService.validCustomer(booking.getCustomerId()) && RoomService.validRoom(booking.getRoomId())) {
+//			System.out.println("NOT EXIST");
+//			repo.save(booking);
+//			return true;
+//		}
+//		System.out.println("EXIST");
+//		return false;
+//	}
 	
 
 	
