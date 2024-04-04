@@ -31,3 +31,9 @@ build/
 
 ### VS Code ###
 .vscode/
+
+/C:/H2SpringDB/
+C:/H2SpringDB/springclassjpa.lock.db
+C:/H2SpringDB/springclassjpa.mv.db
+
+

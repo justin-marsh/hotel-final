@@ -26,7 +26,7 @@ public class RoomController {
 	public String addRoom(Model model) {
 		model.addAttribute("room", new Room());
 		
-		return "add-book-page";
+		return "rooms";
 	}
 	
 	@PostMapping("/processAddRoom")
