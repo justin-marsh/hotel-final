@@ -4,6 +4,12 @@
   initial-value: #FEFDED;
 }
 
+@property --LexaCol-pale {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #ecffec;
+}
+
 @property --LexaCol-soft {
   syntax: "<color>";
   inherits: false;
@@ -106,7 +112,23 @@ header h1 {
 }
 
 .listing {
-	background: var(--LexaCol-soft);
+	background-color: var(--LexaCol-soft);
 	border: 2px var(--LexaCol-bold) dashed;
 	padding: 20px;
+	margin-bottom: 5px;
+	display: inline-block;
+	transition: background-color 0.4s;
+}
+
+.listing:hover {
+	background-color: var(--LexaCol-pale);
+}
+
+.roomListing {
+	cursor: pointer;
+}
+
+.roomListing .roomName {
+	font-weight: bold;
+	font-size: 1.5em;
 }
