@@ -7,13 +7,19 @@
 @property --LexaCol-soft {
   syntax: "<color>";
   inherits: false;
-  initial-value: #C6EBC5;
+  initial-value: #D7F5D7;
 }
 
 @property --LexaCol-bold {
   syntax: "<color>";
   inherits: false;
   initial-value: #A1C398;
+}
+
+@property --LexaCol-hard {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #1cac4c;
 }
 
 @property --LexaCol-neturalAccent {
@@ -34,10 +40,49 @@
   initial-value: #FA7070;
 }
 
+::selection {
+  color: white;/*var(--LexaCol-hard);*/
+  background: var(--LexaCol-mutedContrastAccent);
+}
+
 body {
 	background: var(--LexaCol-background);
     color: var(--LexaCol-neturalAccent);
     margin: 0;
+}
+
+input {
+	color: var(--LexaCol-neturalAccent);
+    background-color: var(--LexaCol-soft);
+    border: none;
+    border-bottom: 2px dashed var(--LexaCol-mutedContrastAccent);
+}
+
+input[type="number" i], input[type="text" i] {
+    padding: 2px;
+	padding-inline: 5px;
+}
+
+input[type="submit" i] {
+	cursor: pointer;
+	border: none;
+	border-bottom: 2px var(--LexaCol-contrastAccent) solid;
+	/*border-radius: 4px;*/
+	/*padding: 2px;*/
+	padding: 2px;
+	padding-inline: 6px;
+	
+	background-image: linear-gradient(to top, var(--LexaCol-soft) 50%, var(--LexaCol-mutedContrastAccent) 50%);
+	background-size: 100% 200%;
+	background-position: 100% -100%;
+	
+	transition: background-position 0.5s;
+	
+	font-weight: bold;
+}
+
+input[type="submit" i]:hover {
+	background-position: 100% 0%;	
 }
 
 header {
@@ -53,4 +98,15 @@ header h1 {
 #maincontent {
 	margin-left: 10px;
 	margin-right: 10px;
+}
+
+.formfield {
+	padding-top:2px;
+	padding-bottom:2px;
+}
+
+.listing {
+	background: var(--LexaCol-soft);
+	border: 2px var(--LexaCol-bold) dashed;
+	padding: 20px;
 }
