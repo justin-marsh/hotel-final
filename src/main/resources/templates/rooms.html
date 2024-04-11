@@ -21,9 +21,7 @@
 			<div class="roomName">Room <span th:text="${#numbers.formatInteger(room.roomNumber,0)}"></span></div>
 			<div class="roomType"><span th:text="${room.type}"></span></div>
 			<div class="roomCost"><span th:text="${#numbers.formatCurrency(room.price)}"></span></div>
-			<form th:action="@{/bookThisRoom}" method="post" th:object="${room.id}" style="display: hidden;">
-				<input type="submit" class="bookThisRoomSubmitButton"/>
-			</form>
+			<form th:action="@{/bookThisRoom}" method="post" th:object="${room}" style="display: hidden;"></form>
 		</div>
 		<!-- <form th:action="@{/search}" method="get">
 			<label>Search for books by any word in title: </label> 
