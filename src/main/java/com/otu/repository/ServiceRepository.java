@@ -1,5 +1,5 @@
 package com.otu.repository;
-/*
+
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -8,13 +8,12 @@ import org.springframework.data.repository.query.Param;
 
 import com.otu.model.ProvidedService;
 
-public interface ServiceRespository extends JpaRepository<ProvidedService, Long>{
+public interface ServiceRepository extends JpaRepository<ProvidedService, Long>{
 	
-	boolean existsByNameAndDescription(String name, String description);
+	boolean existsById(long id);
 	
 	
-	@Query("select s from Service s where upper(s.name) like concat('%', upper(:name), '%')")
+	@Query("select s from ProvidedService s where upper(s.name) like concat('%', upper(:name), '%')")
 	List<ProvidedService> findByName(@Param("name") String name);
 	
 }
-*/
