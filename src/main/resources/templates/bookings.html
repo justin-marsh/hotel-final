@@ -9,24 +9,20 @@
 		<h2>Add new Booking:</h2>
 
 		<form th:action="@{/bookings}" method="post" th:object="${booking}">
-		    <select>
-		        <option th:each="customerData : ${CustomerDropdown}" th:object="${customerData.customer}">
-		            <span th:text="${customerData.display}"></span>
-		        </option>
-		    </select>    
+		    <label for="customer-dropdown">Customer</label>
+			<select id="customer-dropdown">
+			    <option th:each="customerData : ${CustomerDropdown}" th:object="${customerData.customer}">
+			        <span th:text="${customerData.display}"></span>
+			    </option>
+			</select>    
+			
+			<label for="room-dropdown">Room</label>
+			<select id="room-dropdown">
+			    <option th:each="room : ${existingRooms}" th:value="${room}">
+			        <span th:text="${room.roomNumber}"></span>
+			    </option>
+			</select>
 		    
-		    <select>
-		        <option th:each="customer : ${existingCustomers}" th:object="${customer}">
-		            <span th:text="${customer.name}"></span>
-		        </option>
-		    </select>
-		    
-		    
-		    <select>
-		        <option th:each="room : ${existingRooms}" th:value="${room}">
-		            <span th:text="${room.roomNumber}"></span>
-		        </option>
-		    </select>
 		    
 		    <div class="formfield"><label>Start date: </label> <input type="date" name="startDate" th:field="*{startDate}"></div>
 		    <div class="formfield"><label>End date: </label> <input type="date" name="endDate" th:field="*{endDate}"></div>

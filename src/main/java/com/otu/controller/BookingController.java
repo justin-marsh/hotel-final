@@ -13,6 +13,7 @@ import com.otu.model.Booking;
 import com.otu.model.Room;
 import com.otu.service.BookingService;
 import com.otu.service.CustomerService;
+
 import com.otu.service.RoomService;
 
 @Controller
@@ -22,9 +23,11 @@ public class BookingController {
 	RoomService roomService;
 	
 	@Autowired
-	public BookingController(BookingService service) {
+	public BookingController(BookingService service, CustomerService customerService, RoomService roomService) {
 		super();
 		this.service = service;
+		this.customerService = customerService;
+		this.roomService = roomService;
 	
 	}
 
@@ -33,9 +36,12 @@ public class BookingController {
 	   
 		model.addAttribute("booking", new Booking()); // empty obj for filling with data to add a new obj to repo
 		model.addAttribute("existingBookings", service.getBookings()); // list<Obj> of all objs in the repo
-			
-		model.addAttribute("CustomerDropDowns", service.cService.getDropDown()); // list<CustomerDropdowns> for use in drop downs
-		model.addAttribute("existingRooms", service.rService.getRooms()); // list<Obj> of all objs in the repo
+		
+		//List<CustomerDropdown> temp = service.cService.getDropDown();
+		
+		
+		model.addAttribute("CustomerDropdown", service.cService.getDropDown()); // list<CustomerDropdowns> for use in drop downs
+		model.addAttribute("existingRooms", roomService.getRooms()); // list<Obj> of all objs in the repo
 		
 		
 		return "bookings";
