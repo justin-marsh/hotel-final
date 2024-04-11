@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.otu.model.Booking;
+import com.otu.model.Room;
 import com.otu.service.BookingService;
 import com.otu.service.CustomerService;
 

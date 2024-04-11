@@ -1,5 +1,6 @@
 package com.otu.service;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -41,6 +42,35 @@ public class CustomerService {
 
 	public boolean validateCustomer(Customer customer) {
 		return repo.existsById(customer.getId());
+	}
+	
+	
+	class CustomerDropdown //for use in below function
+	{
+	    public String display;
+	    public Customer customer;
+	};
+	public List<CustomerDropdown> getDropDown() {
+		List<CustomerDropdown> ret = new ArrayList<CustomerDropdown>();
+		List<Customer> Customers = getCustomers();
+	
+		for(Customer i :Customers) {
+			
+			CustomerDropdown cdrop = new CustomerDropdown();
+			
+			if(repo.findByName(i.getName()).size() > 1 ) {
+				cdrop.display = i.getName() + " " + i.getPhoneNumber();
+			}else {
+				cdrop.display = i.getName();
+			}
+			
+			cdrop.customer = i;
+			
+			ret.add(cdrop);
+		}
+		
+		return ret;
+		
 	}
 	
 }

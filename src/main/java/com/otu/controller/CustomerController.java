@@ -26,6 +26,7 @@ public class CustomerController {
 	public String customers(Model model) {
 		model.addAttribute("customer", new Customer()); // empty obj for filling with data to add a new obj to repo
 		model.addAttribute("existingCustomers", service.getCustomers()); // list<Obj> of all objs in the repo
+		model.addAttribute("CustomerDropDowns", service.getDropDown()); // list<CustomerDropdowns> for use in drop downs
 		
 		return "customers";
 	}
@@ -45,5 +46,6 @@ public class CustomerController {
 		
 		return "redirect:/customers";
 	}
+
 	
 }

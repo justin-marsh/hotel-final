@@ -128,4 +128,8 @@ public class Booking {
 				+ ", endDate=" + endDate + "]";
 	}
 	
+	public String toDropDown() {
+		return Integer.toString(room.getRoomNumber()) + " - " + startDate; 
+	}
+	
 }
