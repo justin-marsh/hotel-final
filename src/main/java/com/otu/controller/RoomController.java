@@ -45,6 +45,16 @@ public class RoomController {
 		
 		return "redirect:/rooms";
 	}
+
+
+
+	@PostMapping("/bookThisRoom")
+	public String bookThisRoom(long roomId, Model model) {
+		
+		
+		
+		return "redirect:/bookings";
+	}
 	
 
 }
