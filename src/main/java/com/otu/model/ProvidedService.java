@@ -25,12 +25,13 @@ public class ProvidedService {
 		super();
 	}
 
-	public ProvidedService(long id, String name, String description, double price) {
+	public ProvidedService(long id, String name, String description, double price, Booking booking) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.description = description;
 		this.price = price;
+		this.booking = booking;
 
 	}
 
