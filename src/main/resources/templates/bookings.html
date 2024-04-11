@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/headerinclude :: headerinclude"/>
+<body>
+	<header th:include="fragments/header :: header"></header>
+	<div id="maincontent">
+		<a th:href="@{/}">Back</a><br/><br/>
+		
+		<h2>Add new Booking:</h2>
+
+		<form th:action="@{/bookings}" method="post" th:object="${booking}">
+		    <select>
+		        <option th:each="customerData : ${CustomerDropdowns}" th:value="${customerData.customer}">
+		            <span th:text="${customerData.display}"></span>
+		        </option>
+		    </select>    
+		    
+		    <select>
+		        <option th:each="customer : ${existingCustomers}" th:value="${room}">
+		            <span th:text="${customer.name}"></span>
+		        </option>
+		    </select>
+		    
+		    
+		    <select>
+		        <option th:each="room : ${existingRooms}" th:value="${room}">
+		            <span th:text="${room.roomNumber}"></span>
+		        </option>
+		    </select>
+		    
+		    <div class="formfield"><label>Start date: </label> <input type="date" name="startDate" th:field="*{startDate}"></div>
+		    <div class="formfield"><label>End date: </label> <input type="date" name="endDate" th:field="*{endDate}"></div>
+		
+		    <br/>
+		    <input type="submit" value="Add Booking">
+		</form>
+		
+		<div th:class="${errorText == null} ? 'errorBoxEmpty' : 'errorBox'" th:text="${errorText}"></div>
+		<br/><br/>
+		<div class="grid-container">
+			<div class="grid-item listing bookingListing" th:classappend="${booking.dateRangeIsValid()}?'dateRangeIsValid':''" th:each="booking : ${existingBookings}">
+				<div class="listingInfo roomListingInfo">
+					<div class="customerName">Customer <span th:text="${booking.customer.name}"></span></div>
+					
+					<div class="roomName">Room <span th:text="${#numbers.formatInteger(booking.room.roomNumber,0)}"></span></div>
+					<div class="startDate">Start Date <span th:text="${booking.startDate}"></span></div>
+					<div class="endDate">End Date <span th:text="${booking.endDate}"></span></div>
+				</div>
+				
+					
+				</div>
+			</div>
+		</div>
+		<!-- <form th:action="@{/search}" method="get">
+			<label>Search for books by any word in title: </label> 
+			<input type="text" name="title"> 
+			<input type="submit" value="search for books">
+		</form> -->
+	</div>
+</body>
+</html>
