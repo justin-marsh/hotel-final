@@ -10,13 +10,13 @@
 
 		<form th:action="@{/bookings}" method="post" th:object="${booking}">
 		    <select>
-		        <option th:each="customerData : ${CustomerDropdown}" th:value="${customerData.customer}">
+		        <option th:each="customerData : ${CustomerDropdown}" th:object="${customerData.customer}">
 		            <span th:text="${customerData.display}"></span>
 		        </option>
 		    </select>    
 		    
 		    <select>
-		        <option th:each="customer : ${existingCustomers}" th:value="${customer}">
+		        <option th:each="customer : ${existingCustomers}" th:object="${customer}">
 		            <span th:text="${customer.name}"></span>
 		        </option>
 		    </select>
