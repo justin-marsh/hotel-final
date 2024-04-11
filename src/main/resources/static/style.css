@@ -111,8 +111,17 @@ header h1 {
 	padding-bottom:2px;
 }
 
+.errorBox {
+    padding: 5px;
+    margin: 15px;
+    background-color: var(--LexaCol-mutedContrastAccent);
+    display: inline-block;
+    border: 2px var(--LexaCol-contrastAccent) dashed;
+}
+
+
 .listing {
-	background-color: var(--LexaCol-soft);
+	background-color: var(--LexaCol-pale);
 	border: 2px var(--LexaCol-bold) dashed;
 	padding: 20px;
 	margin-bottom: 5px;
@@ -120,12 +129,15 @@ header h1 {
 	transition: background-color 0.4s;
 }
 
-.listing:hover {
-	background-color: var(--LexaCol-pale);
+.roomListing.isBooked {
+	border-color: var(--LexaCol-mutedContrastAccent);
 }
 
-.roomListing {
-	cursor: pointer;
+.listing .listingInfo {
+	display: inline-block;
+}
+.listing .listingControls {
+	display: inline-block;
 }
 
 .roomListing .roomName {
