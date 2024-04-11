@@ -33,9 +33,13 @@ public class ProvidedServiceService {
 	}
 	
 	public List<com.otu.model.ProvidedService> getProvidedServices() {
-        return Collections.<com.otu.model.ProvidedService>emptyList();
+        //return Collections.<com.otu.model.ProvidedService>emptyList();
+		return repo.findAll();
     }
 	
+	public boolean validateService(com.otu.model.ProvidedService service) {
+		return repo.existsById(service.getId());
+	}
 
 	
 }

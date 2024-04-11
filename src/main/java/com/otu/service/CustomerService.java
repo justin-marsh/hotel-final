@@ -31,9 +31,16 @@ public class CustomerService {
 		return false;
 	}
 	
+	public boolean validateCustomer(long id) {
+		return repo.existsById(id);
+	}
+	
 	public List<Customer> getCustomers() {
-        return Collections.<Customer>emptyList();
+        return repo.findAll();
     }
 
+	public boolean validateCustomer(Customer customer) {
+		return repo.existsById(customer.getId());
+	}
 	
 }

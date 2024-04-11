@@ -12,6 +12,8 @@ public interface RoomRepository extends JpaRepository<Room, Long>{
 	
 	boolean existsById(Long id);
 	
+
+	
 	@Query("select r from Room r where r.roomNumber = :roomNumber")
 	List<Room> findByroomNumber(@Param("roomNumber") int roomNumber);
 	

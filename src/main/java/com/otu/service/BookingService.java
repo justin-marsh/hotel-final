@@ -42,6 +42,9 @@ public class BookingService {
         return Collections.<Booking>emptyList();
     }
 	
+	public boolean validateBooking(Booking booking) {
+		return repo.existsById(booking.getId());
+	}
 
 	
 }

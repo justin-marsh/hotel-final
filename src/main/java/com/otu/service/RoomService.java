@@ -1,5 +1,6 @@
 package com.otu.service;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,11 +32,16 @@ public class RoomService {
 	}
 	
 	public List<Room> getRooms(){
-		return Arrays.asList(
-			new Room(1, 1, "Suite", 69.99),
-			new Room(2, 2, "Suite", 70.01),
-			new Room(3, 3, "Penthouse", 420.00)
-		);
+//		return Arrays.asList(
+//			new Room(1, 1, "Suite", 69.99),
+//			new Room(2, 2, "Suite", 70.01),
+//			new Room(3, 3, "Penthouse", 420.00)
+//		);
+		return repo.findAll();
+	}
+	
+	public boolean validateRoom(Room room) {
+		return repo.existsById(room.getId());
 	}
 
 	
