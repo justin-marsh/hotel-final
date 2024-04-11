@@ -80,4 +80,7 @@ public class ProvidedService {
 				+ "]";
 	}
 	
+	public String toDropDown() {
+		return this.name + " " + this.description + " $" + this.price;
+	}
 }
