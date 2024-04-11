@@ -21,10 +21,12 @@ public class Booking {
 	@JoinTable(name = "customer_bookings", joinColumns = { @JoinColumn(name = "booking_id") }, inverseJoinColumns = {
             @JoinColumn(name = "customer_id") })
 	private Customer customer;
+	private long customerId;
 	@ManyToOne
 	@JoinTable(name = "room_bookings", joinColumns = { @JoinColumn(name = "booking_id") }, inverseJoinColumns = {
             @JoinColumn(name = "room_id") })
 	private Room room;
+	private long roomId;
 	private LocalDate startDate;
 	private LocalDate endDate;
 	
@@ -40,9 +42,38 @@ public class Booking {
 		super();
 		this.id = id;
 		this.customer = customer;
+		this.customerId = customer.getId();
 		this.room = room;
+		this.roomId = room.getId();
 		this.startDate = startDate;
 		this.endDate = endDate;
+	}
+	
+	public boolean createCustomer() {
+//			if(!customerIdIsValid(this.customerId)) {
+//				return false;
+//			}
+//			this.customer = customerIdToCustomer(this.customerId);
+		// or 
+//			this.customer = customerIdToCustomer(this.customerId);
+//			if(this.customer == null) {
+//				return false;
+//			}
+		
+		return true;
+	}
+	
+	public boolean createRoom() {
+//			if(!roomIdIsValid(this.roomId)) {
+//				return false;
+//			}
+//			this.room = roomIdToRoom(this.roomId);
+		// or
+//			this.room = roomIdToRoom(this.roomId);
+//			if(this.room == null) {
+//				return false;
+//			}
+		return true;
 	}
 
 	public long getId() {
