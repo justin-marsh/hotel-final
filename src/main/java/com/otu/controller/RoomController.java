@@ -30,31 +30,25 @@ public class RoomController {
 		return "rooms";
 	}
 	
-	@PostMapping("/processAddRoom")
-	public String processAddRoom(Room room, Model model) {
+	@PostMapping("/rooms") // Doing this so that the posted form has a nice neat URL
+	public String rooms(Room room, Model model) {
 
 		System.out.println(room);
 		
-		boolean roomCreated = service.addRoom(room);
-		
-		model.addAttribute("roomAddedSuccessfully", roomCreated); // boolean for error text in the template
+		boolean roomCreated = false;
+		//boolean roomCreated = service.addRoom(room);		
 		
 		if(roomCreated) {
 			model.addAttribute("addedRoomNumber", room.getRoomNumber());
+		} else {
+			model.addAttribute("errorText", "Failed to add room");
 		}
 		
-		return "redirect:/rooms";
+		return this.rooms(model); // setup the rooms page
 	}
 
 
 
-	@PostMapping("/bookThisRoom")
-	public String bookThisRoom(long roomId, Model model) {
-		
-		
-		
-		return "redirect:/bookings";
-	}
 	
 
 }
