@@ -8,20 +8,35 @@
 		
 		<h2>Add new room:</h2>
 
-		<form th:action="@{/processAddRoom}" method="post" th:object="${room}">
-			<div class="formfield"><label>Room Number: </label> <input type="number" name="roomNumber" th:field="*{roomNumber}"></div>
-			<div class="formfield"><label>Room Type: </label> <input type="text" name="type" th:field="*{type}"></div>
-			<div class="formfield"><label>Room Price: </label> <input type="number" name="price" th:field="*{price}"></div>
+		<form th:action="@{/rooms}" method="post" th:object="${room}">
+			<div class="formfield"><label>Room number: </label> <input type="number" name="roomNumber" th:field="*{roomNumber}"></div>
+			<div class="formfield"><label>Room type: </label> <input type="text" name="type" th:field="*{type}"></div>
+			<div class="formfield"><label>Room price: </label> <input type="number" name="price" th:field="*{price}"></div>
 	
 			<br/>
-			<input type="submit" value="Add Room">
+			<input type="submit" value="Add room">
 		</form>
+		<div th:class="${errorText == null} ? 'errorBoxEmpty' : 'errorBox'" th:text="${errorText}"></div>
 		<br/><br/>
-		<div class="listing roomListing" th:each="room : ${existingRooms}">
-			<div class="roomName">Room <span th:text="${#numbers.formatInteger(room.roomNumber,0)}"></span></div>
-			<div class="roomType"><span th:text="${room.type}"></span></div>
-			<div class="roomCost"><span th:text="${#numbers.formatCurrency(room.price)}"></span></div>
-			<form th:action="@{/bookThisRoom}" method="post" th:object="${room}" style="display: hidden;"></form>
+		<div class="grid-container">
+			<div class="grid-item listing roomListing" th:classappend="${room.isBooked()}?'isBooked':''" th:each="room : ${existingRooms}">
+				<div class="listingInfo roomListingInfo">
+					<div class="roomName">Room <span th:text="${#numbers.formatInteger(room.roomNumber,0)}"></span></div>
+					<div class="roomType"><span th:text="${room.type}"></span></div>
+					<div class="roomCost"><span th:text="${#numbers.formatCurrency(room.price)}"></span></div>
+				</div>
+				<div class="listingControls roomListingControls">
+					<form th:action="@{/bookThisRoom}" method="post" th:object="${room}" style="display: hidden;">
+						<input type="submit" value="View bookings">
+					</form>
+					<form th:action="@{/bookThisRoom}" method="post" th:object="${room}" style="display: hidden;">
+						<input type="submit" value="Book room">
+					</form>
+					<form th:action="@{/deleteThisRoom}" method="post" th:object="${room}" style="display: hidden;">
+						<input type="submit" value="Delete room"> <!-- WORK ON: add confirmation -->
+					</form>
+				</div>
+			</div>
 		</div>
 		<!-- <form th:action="@{/search}" method="get">
 			<label>Search for books by any word in title: </label> 
