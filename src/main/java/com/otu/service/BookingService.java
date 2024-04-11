@@ -27,7 +27,7 @@ public class BookingService {
 		
 		Room room = booking.getRoom();
 		Customer customer = booking.getCustomer();
-		List<Booking> existingBookings = repo.findByCustomerIdAndRoomId(customer.getId(), room.getId());
+		List<Booking> existingBookings = repo.findByCustomerAndRoom(customer, room);
 		
 		if(existingBookings.isEmpty()) {
 			System.out.println("NOT EXIST");
