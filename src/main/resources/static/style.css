@@ -1,0 +1,56 @@
+@property --LexaCol-background {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #FEFDED;
+}
+
+@property --LexaCol-soft {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #C6EBC5;
+}
+
+@property --LexaCol-bold {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #A1C398;
+}
+
+@property --LexaCol-neturalAccent {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #000000;
+}
+
+@property --LexaCol-mutedContrastAccent {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #EBB9B4;
+}
+
+@property --LexaCol-contrastAccent {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #FA7070;
+}
+
+body {
+	background: var(--LexaCol-background);
+    color: var(--LexaCol-neturalAccent);
+    margin: 0;
+}
+
+header {
+    background: var(--LexaCol-bold);
+    padding: 10px 40px 0px 40px;
+	border-bottom: var(--LexaCol-contrastAccent) 2px solid;
+}
+
+header h1 {
+	margin-bottom: 2px;
+}
+
+#maincontent {
+	margin-left: 10px;
+	margin-right: 10px;
+}

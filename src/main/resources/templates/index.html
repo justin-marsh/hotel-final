@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/headerinclude :: headerinclude"/>
+<body>
+	<header th:include="fragments/header :: header"></header>
+	<div id="maincontent">
+		<!-- <a th:href="@{/addCustomer}">here</a> to add a new Customer!
+		<br><br><br>
+		<form th:action="@{/search}" method="get">
+			<label>Search for books by any word in title: </label> 
+			<input type="text" name="title"> 
+			<input type="submit" value="search for books">
+		</form> -->
+		<a th:href="@{/customers}">Customers</a><br/>
+		<a th:href="@{/rooms}">Rooms</a><br/>
+		<a th:href="@{/bookings}">Bookings</a><br/>
+		<a th:href="@{/services}">Services</a><br/>
+	</div>
+</body>
+</html>
