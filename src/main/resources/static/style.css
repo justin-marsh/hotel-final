@@ -4,6 +4,7 @@
   initial-value: #FEFDED;
 }
 
+
 @property --LexaCol-pale {
   syntax: "<color>";
   inherits: false;
@@ -44,6 +45,17 @@
   syntax: "<color>";
   inherits: false;
   initial-value: #FA7070;
+}
+
+:root {
+  --LexaCol-background: #FEFDED;
+  --LexaCol-pale: #ecffec;
+  --LexaCol-soft: #D7F5D7;
+  --LexaCol-bold: #A1C398;
+  --LexaCol-hard: #1cac4c;
+  --LexaCol-neturalAccent: #000000;
+  --LexaCol-mutedContrastAccent: #EBB9B4;
+  --LexaCol-contrastAccent: #FA7070;
 }
 
 ::selection {
