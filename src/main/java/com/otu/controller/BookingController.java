@@ -47,5 +47,15 @@ public class BookingController {
 		
 		return "redirect:/bookings";
 	}
+
+
+	// from /rooms form
+	@PostMapping("/bookFromRoom")
+	public String bookThisRoom(Room room, Model model) {
+		
+		// from the rooms page, this is the room to be booked
+		
+		return this.bookings(model);
+	}
 	
 }
