@@ -34,7 +34,7 @@ public class RoomService {
 		return Arrays.asList(
 			new Room(1, 1, "Suite", 69.99),
 			new Room(2, 2, "Suite", 70.01),
-			new Room(3, 3, "Penthouse", 420.00),
+			new Room(3, 3, "Penthouse", 420.00)
 		);
 	}
 
