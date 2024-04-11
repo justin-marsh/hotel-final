@@ -16,11 +16,31 @@
 			<br/>
 			<input type="submit" value="Add Customer">
 		</form>
-		<!-- <form th:action="@{/search}" method="get">
-			<label>Search for customers by any word in name: </label> 
-			<input type="text" name="name"> 
+		
+		<form th:action="@{/search}" method="get" th:object="${customer}">
+			<label>Search for customers: </label> 
+		    <br/>
+            <div class="formfield"><label>Name: </label> <input type="text" name="name" th:field="*{name}"></div>
+			<div class="formfield"><label>Phone Number: </label> <input type="number" name="phoneNumber" th:field="*{phoneNumber}"></div>
+			<div class="formfield"><label>Email: </label> <input type="text" name="email" th:field="*{email}"></div>
+            <br/>
 			<input type="submit" value="search for customers">
-		</form> -->
+		</form> 
+		
+		<h2>Results:</h2>
+		
+		<table>
+			<tr>
+				<th>Name</th>
+				<th>Phone Number</th>
+				<th>Email</th>
+			</tr>
+			<tr th:each="customer : ${searchResult}">
+                        <td th:text="${customer.name}"></td>
+                        <td th:text="${customer.phoneNumber}"></td>
+                        <td th:text="${customer.email}"></td>
+            </tr>
+		</table>	
 	</div>
 </body>
 </html>

@@ -73,4 +73,16 @@ public class CustomerService {
 		
 	}
 	
+	public List<Customer> findByName(String name) {
+		return repo.findByName(name);
+	}
+	
+	public List<Customer> findByPhoneNumber(String phoneNumber) {
+		return repo.findByPhoneNumber(phoneNumber);
+	}
+	
+	public List<Customer> findByEmail(String email) {
+		return repo.findByEmail(email);
+	}
+	
 }

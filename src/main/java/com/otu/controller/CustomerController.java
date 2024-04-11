@@ -1,5 +1,6 @@
 package com.otu.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +47,50 @@ public class CustomerController {
 		
 		return "redirect:/customers";
 	}
-
 	
+	@GetMapping("/search")
+	public String searchForCustomer(@RequestParam String name, 
+									@RequestParam String phoneNumber, 
+									@RequestParam String email, Model model) {
+		
+		List<Customer> searchResult = new ArrayList();
+		List<Long> idList = new ArrayList();
+		
+		if(name != "") {
+			List<Customer> tempCustomer = service.findByName(name);
+			
+			for(Customer temp : tempCustomer){
+				  idList.add(temp.getId());
+				  searchResult.add(temp);
+			}
+		}
+		
+		if(phoneNumber != "") {
+			List<Customer> tempCustomer = service.findByPhoneNumber(phoneNumber);
+			
+			for(Customer temp : tempCustomer){
+				if(!idList.contains(temp.getId())) {
+					idList.add(temp.getId());
+					searchResult.add(temp);
+				} 
+				  
+			}
+		}
+		
+		if(email != "") {
+			List<Customer> tempCustomer = service.findByEmail(email);
+			
+			for(Customer temp : tempCustomer){
+				if(!idList.contains(temp.getId())) {
+					idList.add(temp.getId());
+					searchResult.add(temp);
+				}  	
+			}
+		}
+		
+		model.addAttribute("searchResult", searchResult);
+		
+		return this.customers(model);				
+	}
+
 }
