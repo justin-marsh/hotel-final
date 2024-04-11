@@ -22,27 +22,28 @@ public class CustomerController {
 		this.service = service;
 	}
 
-	@GetMapping("/addCustomer")
-	public String addCustomer(Model model) {
-		model.addAttribute("customer", new Customer());
+	@GetMapping("/customers")
+	public String customers(Model model) {
+		model.addAttribute("customer", new Customer()); // empty obj for filling with data to add a new obj to repo
+		model.addAttribute("existingCustomers", service.getCustomers()); // list<Obj> of all objs in the repo
 		
-		return "add-book-page";
+		return "customers";
 	}
 	
 	@PostMapping("/processAddCustomer")
 	public String processAddCustomer(Customer customer, Model model) {
-		
+
 		System.out.println(customer);
-		//View    Controller    Service      Repository    DB
-		boolean CustomerCreated = service.addCustomer(customer);
 		
-		if(CustomerCreated) {
-			model.addAttribute("name", customer.getName());
-			return "book-created";
-		} else {
-			return "redirect:/addCustomer";
-		}		
+		boolean customerCreated = service.addCustomer(customer);
+		
+		model.addAttribute("customerAddedSuccessfully", customerCreated); // boolean for error text in the template
+		
+		if(customerCreated) {
+			model.addAttribute("addedCustomerName", customer.getName());
+		}
+		
+		return "redirect:/customers";
 	}
 	
-
 }

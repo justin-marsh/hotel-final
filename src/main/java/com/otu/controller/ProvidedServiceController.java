@@ -9,40 +9,41 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.otu.model.Customer;
-import com.otu.service.CustomerService;
+import com.otu.model.ProvidedService;
+import com.otu.service.ProvidedService;
 
 @Controller
 public class ProvidedServiceController {
 	com.otu.service.ProvidedService service;
 	
 	@Autowired
-	public ProvidedServiceController(com.otu.service.ProvidedService service) {
+	public ProvicedServiceController(com.otu.service.ProvidedService service) {
 		super();
 		this.service = service;
 	}
 
-	@GetMapping("/Services")
-	public String servicespage(Model model) {
-		model.addAttribute("customer", new Customer());
+	@GetMapping("/services")
+	public String services(Model model) {
+		model.addAttribute("booking", new com.otu.model.ProvidedService()); // empty obj for filling with data to add a new obj to repo
+		model.addAttribute("existingServices", service.getProvidedServices()); // list<Obj> of all objs in the repo
 		
-		return "s";
+		return "services";
 	}
 	
 	@PostMapping("/processAddService")
-	public String processAddService(com.otu.model.ProvidedService serviceOBJ, Model model) {
+	public String processAddService(com.otu.model.ProvidedService providedService, Model model) {
+
+		System.out.println(providedService);
 		
-		System.out.println(serviceOBJ);
-		//View    Controller    Service      Repository    DB
-		boolean ServiceCreated = service.addService(serviceOBJ);
+		boolean serviceCreated = service.addService(providedService);
 		
-		if(ServiceCreated) {
-			model.addAttribute("name", serviceOBJ.getName());
-			return "Service-created";
-		} else {
-			return "redirect:/Services";
-		}		
+		model.addAttribute("serviceAddedSuccessfully", serviceCreated); // boolean for error text in the template
+		
+//		if(serviceCreated) {
+//			model.addAttribute("addedService?????", providedService.get????()); //?
+//		}
+		
+		return "redirect:/services";
 	}
 	
-
 }

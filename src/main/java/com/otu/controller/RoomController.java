@@ -22,26 +22,28 @@ public class RoomController {
 		this.service = service;
 	}
 
-	@GetMapping("/addRoom")
-	public String addRoom(Model model) {
-		model.addAttribute("room", new Room());
+	@GetMapping("/rooms")
+	public String rooms(Model model) {
+		model.addAttribute("room", new Room()); // empty obj for filling with data to add a new obj to repo
+		model.addAttribute("existingRooms", service.getRooms()); // list<Obj> of all objs in the repo
 		
 		return "rooms";
 	}
 	
 	@PostMapping("/processAddRoom")
 	public String processAddRoom(Room room, Model model) {
-		
+
 		System.out.println(room);
-		//View    Controller    Service      Repository    DB
-		boolean RoomCreated = service.addRoom(room);
 		
-		if(RoomCreated) {
-			model.addAttribute("roomNumber", room.getRoomNumber());
-			return "book-created";
-		} else {
-			return "redirect:/addRoom";
-		}		
+		boolean roomCreated = service.addRoom(room);
+		
+		model.addAttribute("roomAddedSuccessfully", roomCreated); // boolean for error text in the template
+		
+		if(roomCreated) {
+			model.addAttribute("addedRoomNumber", room.getRoomNumber());
+		}
+		
+		return "redirect:/rooms";
 	}
 	
 
