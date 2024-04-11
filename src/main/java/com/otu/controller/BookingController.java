@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.otu.model.Booking;
 import com.otu.service.BookingService;
+import com.otu.service.CustomerService;
 
 @Controller
 public class BookingController {
@@ -20,6 +21,7 @@ public class BookingController {
 	public BookingController(BookingService service) {
 		super();
 		this.service = service;
+	
 	}
 
 	@GetMapping("/bookings")

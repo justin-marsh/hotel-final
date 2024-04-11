@@ -98,12 +98,12 @@ public class Booking {
 	// This is used when we have a list of bookings for a room, and we want to see what days are available
 	public boolean getDatesOverlap(LocalDate queryStartDate, LocalDate queryEndDate) {
 		if(this.startDate.isAfter(queryEndDate)) {
-			return true; // the whole query is before this's start date
+			return false; // the whole query is before this's start date
 		}
 		if(this.endDate.isBefore(queryStartDate)) {
-			return true; // the whole query is after this's end date
+			return false; // the whole query is after this's end date
 		}
-		return false; // there is some other overlap going on
+		return true; // there is some other overlap going on
 	}
 	
 	public boolean getDatesOverlap(Booking queryBooking) {

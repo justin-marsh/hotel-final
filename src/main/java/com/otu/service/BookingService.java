@@ -15,11 +15,14 @@ import com.otu.service.CustomerService;
 @Service
 public class BookingService {
 	BookingRepository repo;
-
+	CustomerService cService;
+	RoomService rService;
 	@Autowired
-	public BookingService(BookingRepository repo) {
+	public BookingService(BookingRepository repo, CustomerService cService,RoomService rService) {
 		super();
 		this.repo = repo;
+		this.cService = cService;
+		this.rService = rService;
 	}
 
 	
@@ -28,6 +31,17 @@ public class BookingService {
 		Room room = booking.getRoom();
 		Customer customer = booking.getCustomer();
 		List<Booking> existingBookings = repo.findByCustomerAndRoom(customer, room);
+		
+
+		if(!cService.validateCustomer(booking.getCustomer())) {
+			System.out.println("invalid Customer");
+			return false;
+		}
+		
+		if(!rService.validateRoom(booking.getRoom())) {
+			System.out.println("Invalid Room");
+			return false;
+		}
 		
 		if(existingBookings.isEmpty()) {
 			System.out.println("NOT EXIST");
