@@ -9,14 +9,14 @@
 		<h2>Add new Booking:</h2>
 
 		<form th:action="@{/bookings}" method="post" th:object="${booking}">
-		    <label for="customer-dropdown">Customer</label>
+		    <label for="customer-dropdown">Customer: </label>
 			<select id="customer-dropdown">
 			    <option th:each="customerData : ${CustomerDropdown}" th:object="${customerData.customer}">
 			        <span th:text="${customerData.display}"></span>
 			    </option>
 			</select>    
 			
-			<label for="room-dropdown">Room</label>
+			<label for="room-dropdown">Room: </label>
 			<select id="room-dropdown">
 			    <option th:each="room : ${existingRooms}" th:value="${room}">
 			        <span th:text="${room.roomNumber}"></span>
