@@ -1,5 +1,6 @@
 package com.otu.service;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,9 @@ public class CustomerService {
 		return false;
 	}
 	
+	public List<Customer> getCustomers() {
+        return Collections.<Customer>emptyList();
+    }
 
 	
 }

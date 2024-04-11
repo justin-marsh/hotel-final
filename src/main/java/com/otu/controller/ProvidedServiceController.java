@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.otu.model.ProvidedService;
-import com.otu.service.ProvidedService;
+import com.otu.service.ProvidedServiceService;
 
 @Controller
 public class ProvidedServiceController {
-	com.otu.service.ProvidedService service;
+	ProvidedServiceService service;
 	
 	@Autowired
-	public ProvicedServiceController(com.otu.service.ProvidedService service) {
+	public ProvidedServiceController(ProvidedServiceService service) {
 		super();
 		this.service = service;
 	}

@@ -1,11 +1,14 @@
 package com.otu.service;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.otu.model.Booking;
+import com.otu.model.Customer;
+import com.otu.model.Room;
 import com.otu.repository.BookingRepository;
 import com.otu.service.CustomerService;
 
@@ -20,15 +23,24 @@ public class BookingService {
 	}
 
 	
-//	public boolean addBooking(Booking booking) {
-//		if(!repo.existsByRoomId(booking.getRoomId()) && CustomerService.validCustomer(booking.getCustomerId()) && RoomService.validRoom(booking.getRoomId())) {
-//			System.out.println("NOT EXIST");
-//			repo.save(booking);
-//			return true;
-//		}
-//		System.out.println("EXIST");
-//		return false;
-//	}
+	public boolean addBooking(Booking booking) {
+		
+		Room room = booking.getRoom();
+		Customer customer = booking.getCustomer();
+		List<Booking> existingBookings = repo.findByCustomerIdAndRoomId(customer.getId(), room.getId());
+		
+		if(existingBookings.isEmpty()) {
+			System.out.println("NOT EXIST");
+			repo.save(booking);
+			return true;
+		}
+		System.out.println("EXIST");
+		return false;
+	}
+	
+	public List<Booking> getBookings() {
+        return Collections.<Booking>emptyList();
+    }
 	
 
 	

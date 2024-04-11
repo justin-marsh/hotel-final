@@ -30,6 +30,9 @@ public class RoomService {
 		return false;
 	}
 	
+	public List<Room> getRooms(){
+		return null;
+	}
 
 	
 }

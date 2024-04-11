@@ -1,5 +1,6 @@
 package com.otu.service;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,11 +12,11 @@ import com.otu.repository.ServiceRepository;
 
 
 @Service
-public class ProvidedService {
+public class ProvidedServiceService {
 	ServiceRepository repo;
 
 	@Autowired
-	public ProvidedService(ServiceRepository repo) {
+	public ProvidedServiceService(ServiceRepository repo) {
 		super();
 		this.repo = repo;
 	}
@@ -30,6 +31,10 @@ public class ProvidedService {
 		System.out.println("Service cant be created");
 		return false;
 	}
+	
+	public List<com.otu.model.ProvidedService> getProvidedServices() {
+        return Collections.<com.otu.model.ProvidedService>emptyList();
+    }
 	
 
 	
