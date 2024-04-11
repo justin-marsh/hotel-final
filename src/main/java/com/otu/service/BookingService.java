@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.otu.model.Booking;
 import com.otu.model.Customer;
+import com.otu.model.ProvidedService;
 import com.otu.model.Room;
 import com.otu.repository.BookingRepository;
 import com.otu.service.CustomerService;
@@ -62,7 +63,18 @@ public class BookingService {
 	}
 	
 	public List<Booking> getBookings() {
-        return repo.findAll();
+
+		com.otu.model.Room tempRoom = new com.otu.model.Room(1000l, 303, "suite", 50.00);
+		com.otu.model.Customer tempCustomer = new com.otu.model.Customer(1000l, "Lexa Valentine", "435-4444 pizza nova!", "justin.trudeau@canada.gov");
+		java.time.LocalDate tempStartDate = java.time.LocalDate.now(); 
+		java.time.LocalDate tempEndDate = java.time.LocalDate.of(2025, java.time.Month.JANUARY, 1);
+		java.time.LocalDate tempStartDate2 = java.time.LocalDate.of(2025, java.time.Month.JANUARY, 2);
+		java.time.LocalDate tempEndDate2 = java.time.LocalDate.of(2025, java.time.Month.JANUARY, 1);
+		return java.util.Arrays.asList(
+				new Booking(1l, tempCustomer, tempRoom, tempStartDate, tempEndDate),
+				new Booking(2l, tempCustomer, tempRoom, tempStartDate2, tempEndDate2)
+		);
+//        return repo.findAll();
     }
 	
 	public boolean validateBooking(Booking booking) {
