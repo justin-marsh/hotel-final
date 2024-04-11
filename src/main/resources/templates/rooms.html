@@ -6,7 +6,7 @@
 	<div id="maincontent">
 		<a th:href="@{/}">Back</a><br/><br/>
 		
-		<h2>Room details:</h2>
+		<h2>Add new room:</h2>
 
 		<form th:action="@{/processAddRoom}" method="post" th:object="${room}">
 			<div class="formfield"><label>Room Number: </label> <input type="number" name="roomNumber" th:field="*{roomNumber}"></div>
@@ -16,6 +16,15 @@
 			<br/>
 			<input type="submit" value="Add Room">
 		</form>
+		<br/><br/>
+		<div class="listing roomListing" th:each="room : ${existingRooms}">
+			<div class="roomName">Room <span th:text="${#numbers.formatInteger(room.roomNumber,0)}"></span></div>
+			<div class="roomType"><span th:text="${room.type}"></span></div>
+			<div class="roomCost"><span th:text="${#numbers.formatCurrency(room.price)}"></span></div>
+			<form th:action="@{/bookThisRoom}" method="post" th:object="${room.id}" style="display: hidden;">
+				<input type="submit" class="bookThisRoomSubmitButton"/>
+			</form>
+		</div>
 		<!-- <form th:action="@{/search}" method="get">
 			<label>Search for books by any word in title: </label> 
 			<input type="text" name="title"> 
