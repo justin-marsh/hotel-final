@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/headerinclude :: headerinclude"/>
+<body>
+	<header th:include="fragments/header :: header"></header>
+	<div id="maincontent">
+		<a th:href="@{/}">Back</a><br/><br/>
+		
+		<h2>Customer details:</h2>
+
+		<form th:action="@{/processAddCustomer}" method="post" th:object="${customer}">
+			<div class="formfield"><label>Name: </label> <input type="text" name="name" th:field="*{name}"></div>
+			<div class="formfield"><label>Phone Number: </label> <input type="number" name="phoneNumber" th:field="*{phoneNumber}"></div>
+			<div class="formfield"><label>Email: </label> <input type="text" name="email" th:field="*{email}"></div>
+	
+			<br/>
+			<input type="submit" value="Add Customer">
+		</form>
+		<!-- <form th:action="@{/search}" method="get">
+			<label>Search for customers by any word in name: </label> 
+			<input type="text" name="name"> 
+			<input type="submit" value="search for customers">
+		</form> -->
+	</div>
+</body>
+</html>

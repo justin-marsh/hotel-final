@@ -24,7 +24,7 @@ public class ProvidedServiceController {
 
 	@GetMapping("/services")
 	public String services(Model model) {
-		model.addAttribute("booking", new com.otu.model.ProvidedService()); // empty obj for filling with data to add a new obj to repo
+		model.addAttribute("service", new com.otu.model.ProvidedService()); // empty obj for filling with data to add a new obj to repo
 		model.addAttribute("existingServices", service.getProvidedServices()); // list<Obj> of all objs in the repo
 		
 		return "services";
