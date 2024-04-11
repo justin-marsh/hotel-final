@@ -6,8 +6,10 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 public class Booking {
@@ -26,6 +28,8 @@ public class Booking {
 	private LocalDate startDate;
 	private LocalDate endDate;
 	
+	@OneToMany(mappedBy = "booking")
+	private List<ProvidedService> services;
 	
 	
 	public Booking() {
@@ -79,6 +83,14 @@ public class Booking {
 
 	public void setEndDate(LocalDate endDate) {
 		this.endDate = endDate;
+	}
+	
+	public List<ProvidedService> getServices(){
+		return this.services;
+	}
+	
+	public void setServices(List<ProvidedService> services) {
+		this.services = services;
 	}
 	
 	public boolean dateRangeIsValid() {

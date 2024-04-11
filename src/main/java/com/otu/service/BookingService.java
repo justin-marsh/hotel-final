@@ -43,6 +43,15 @@ public class BookingService {
 			return false;
 		}
 		
+		List<Booking> otherBookings = repo.findByRoom(booking.getRoom());
+		for(Booking i : otherBookings) {
+			if( i.getDatesOverlap(booking)) {
+				System.out.println("room not available at listed time!");
+				return false;
+			}
+			
+		}
+		
 		if(existingBookings.isEmpty()) {
 			System.out.println("NOT EXIST");
 			repo.save(booking);
