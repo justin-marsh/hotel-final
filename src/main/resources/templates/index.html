@@ -3,7 +3,7 @@
 <head th:include="fragments/headerinclude :: headerinclude"/>
 <body>
 	<header th:include="fragments/header :: header"></header>
-	<div id="maincontent">
+	<div id="maincontentfront">
 		<!-- <a th:href="@{/addCustomer}">here</a> to add a new Customer!
 		<br><br><br>
 		<form th:action="@{/search}" method="get">
@@ -11,10 +11,10 @@
 			<input type="text" name="title"> 
 			<input type="submit" value="search for books">
 		</form> -->
-		<a th:href="@{/customers}">Customers</a><br/>
-		<a th:href="@{/rooms}">Rooms</a><br/>
-		<a th:href="@{/bookings}">Bookings</a><br/>
-		<a th:href="@{/services}">Services</a><br/>
+		<button onClick = "window.location.href= '/customers';" id = maincontentfrontbutton>Customers</button><br/>
+		<button onClick = "window.location.href= '/rooms';" id = maincontentfrontbutton>Rooms</button><br/>
+		<button onClick = "window.location.href= '/bookings';" id = maincontentfrontbutton>Bookings</button><br/>
+		<button onClick = "window.location.href= '/services';" id = maincontentfrontbutton>Services</button><br/>
 	</div>
 </body>
 </html>
