@@ -10,21 +10,22 @@ public class Booking {
 	@Id
 	@GeneratedValue
 	private long id;
-	private long customerId;
-	private long roomId;
+	private Customer customer;
+	private Room room;
 	private LocalDate startDate;
 	private LocalDate endDate;
 	
-
+	
+	
 	public Booking() {
 		super();
 	}
 
-	public Booking(long id, long customerId, long roomId, LocalDate startDate, LocalDate endDate) {
+	public Booking(long id, Customer customer, Room room, LocalDate startDate, LocalDate endDate) {
 		super();
 		this.id = id;
-		this.customerId = customerId;
-		this.roomId = roomId;
+		this.customer = customer;
+		this.room = room;
 		this.startDate = startDate;
 		this.endDate = endDate;
 	}
@@ -37,20 +38,20 @@ public class Booking {
 		this.id = id;
 	}
 
-	public long getCustomerId() {
-		return customerId;
+	public Customer getCustomer() {
+		return customer;
 	}
 
-	public void setCustomerId(long customerId) {
-		this.customerId = customerId;
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
 
-	public long getRoomId() {
-		return roomId;
+	public Room getRoom() {
+		return room;
 	}
 
-	public void setRoomId(long roomId) {
-		this.roomId = roomId;
+	public void setRoom(Room room) {
+		this.room = room;
 	}
 
 	public LocalDate getStartDate() {
@@ -71,7 +72,7 @@ public class Booking {
 
 	@Override
 	public String toString() {
-		return "Booking [id=" + id + ", customerId=" + customerId + ", roomId=" + roomId + ", startDate=" + startDate
+		return "Booking [id=" + id + ", customerId=" + customer.getId() + ", roomId=" + room.getId() + ", startDate=" + startDate
 				+ ", endDate=" + endDate + "]";
 	}
 	
