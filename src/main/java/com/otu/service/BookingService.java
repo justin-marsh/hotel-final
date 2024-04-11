@@ -62,7 +62,7 @@ public class BookingService {
 	}
 	
 	public List<Booking> getBookings() {
-        return Collections.<Booking>emptyList();
+        return repo.findAll();
     }
 	
 	public boolean validateBooking(Booking booking) {
