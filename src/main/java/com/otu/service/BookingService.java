@@ -15,8 +15,8 @@ import com.otu.service.CustomerService;
 @Service
 public class BookingService {
 	BookingRepository repo;
-	CustomerService cService;
-	RoomService rService;
+	public CustomerService cService;
+	public RoomService rService;
 	@Autowired
 	public BookingService(BookingRepository repo, CustomerService cService,RoomService rService) {
 		super();
