@@ -68,4 +68,9 @@ public class Room {
 	public String toString() {
 		return "Room [id=" + id + ", roomNumber=" + roomNumber + ", type=" + type + ", price=" + price + "]";
 	}
+
+	public boolean isBooked() {
+		// this is essentially random. Just even values are seen as "booked", for variety in style stuff
+		return id%2 == 1;
+	}
 }
