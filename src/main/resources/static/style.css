@@ -183,6 +183,7 @@ header h1 {
 table.customer-table {
     border-collapse: collapse;
     width: 100%;
+    
 }
 
 
@@ -204,5 +205,6 @@ table.customer-table td {
 
 table.customer-table tr{
     background-color: var(--LexaCol-pale);
+    
 }
 
