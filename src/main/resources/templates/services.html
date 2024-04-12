@@ -44,7 +44,7 @@
 					<div class="name">Service Name: <span th:text="${service.name}"></span></div>
 					
 					<div class="description">Service Description: <span th:text="${service.description}"></span></div>
-					<div class="price">Service Price: <span th:text="${service.price}"></span></div>
+					<div class="price">Service Price: <span th:text="${#numbers.formatCurrency(service.price)}"></span></div>
 					
 				</div>
 			</div>
