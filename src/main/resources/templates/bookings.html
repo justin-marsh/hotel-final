@@ -10,25 +10,28 @@
 
 		<form th:action="@{/bookings}" method="post" th:object="${booking}">
 		    <label for="customer-dropdown">Customer: </label>
-			<select id="customer-dropdown">
-			    <option th:each="customerData : ${CustomerDropdown}" th:object="${customerData.customer}">
-			        <span th:text="${customerData.display}"></span>
-			    </option>
+			<select name="customerId" id="customerId" th:field="*{customerId}">
+			    <option 
+			    	th:each="customerData : ${CustomerDropdown}"
+			    	th:value="${customerData.customer.id}"
+					th:text="${customerData.display}"
+				></option>
 			</select>    
 			
 			<label for="room-dropdown">Room: </label>
-			<select id="room-dropdown">
-			    <option th:each="room : ${existingRooms}" th:value="${room}">
-			        <span th:text="${room.roomNumber}"></span>
-			    </option>
+			<select name="roomId" id="roomId" th:field="*{roomId}">
+			    <option
+					th:each="room : ${existingRooms}"
+					th:value="${room.id}"
+					th:text="${room.roomNumber}"
+			    ></option>
 			</select>
-		    
 		    
 		    <div class="formfield"><label>Start date: </label> <input type="date" name="startDate" th:field="*{startDate}"></div>
 		    <div class="formfield"><label>End date: </label> <input type="date" name="endDate" th:field="*{endDate}"></div>
 		
 		    <br/>
-		    <input type="submit" value="Add Booking">
+		    <input type="submit" value="Add booking">
 		</form>
 		
 		<div th:class="${errorText == null} ? 'errorBoxEmpty' : 'errorBox'" th:text="${errorText}"></div>
