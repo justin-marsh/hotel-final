@@ -8,7 +8,14 @@
 		
 		<h2>Service details:</h2>
 
-		
+		<form th:action="@{/processAddService}" method="post" th:object="${service}">
+			<div class="formfield"><label>Name: </label> <input type="text" name="name" th:field="*{name}"></div>
+			<div class="formfield"><label>Description: </label> <input type="text" name="description" th:field="*{description}"></div>
+			<div class="formfield"><label>Price: </label> <input type="number" name="price" th:field="*{price}"></div>
+	
+			<br/>
+			<input type="submit" value="Add Service">
+		</form>
 		
 		
 		
