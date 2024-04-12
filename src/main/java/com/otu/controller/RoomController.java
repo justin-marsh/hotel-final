@@ -25,30 +25,29 @@ public class RoomController {
 	@GetMapping("/rooms")
 	public String rooms(Model model) {
 		model.addAttribute("room", new Room()); // empty obj for filling with data to add a new obj to repo
-		model.addAttribute("existingRooms", service.getRooms()); // list<Obj> of all objs in the repo
-		
-		return "rooms";
-	}
+		return this.rooms_finishPage(model);
+	}	
 	
 	@PostMapping("/rooms") // Doing this so that the posted form has a nice neat URL
 	public String rooms(Room room, Model model) {
 
-		System.out.println(room);
-		
-		//boolean roomCreated = false;
 		boolean roomCreated = service.addRoom(room);		
 		
 		if(roomCreated) {
-		  model.addAttribute("addedRoomNumber", room.getRoomNumber());
+			model.addAttribute("addedRoomNumber", room.getRoomNumber());
+			return this.rooms(model); // setup the rooms page
 		} else {
-		  model.addAttribute("errorText", "Failed to add room");
+			model.addAttribute("errorText", "Failed to add room");
+			model.addAttribute("room", room); // empty obj for filling with data to add a new obj to repo
+			return this.rooms_finishPage(model); // setup the rooms page
 		}
 		
-		return this.rooms(model); // setup the rooms page
 	}
-
-
-
 	
 
+	public String rooms_finishPage(Model model){
+		model.addAttribute("existingRooms", service.getRooms()); // list<Obj> of all objs in the repo
+		
+		return "rooms";
+	}
 }

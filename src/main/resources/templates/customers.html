@@ -39,8 +39,18 @@
                         <td th:text="${customer.name}"></td>
                         <td th:text="${customer.phoneNumber}"></td>
                         <td th:text="${customer.email}"></td>
+                        <td>
+            <form th:action="@{/bookFromCustomer}" method="post" th:object="${customer}" style="display: inline;">
+                <input type="submit" value="Book Customer" />
+            </form>
+            <form th:action="@{/deleteCustomer}" method="post" th:object="${customer}" style="display: inline;">
+                <input type="submit" value="Delete Customer" onclick="return confirm('Are you sure you want to delete this customer?');" />
+            </form>
+        </td>
             </tr>
 		</table>	
 	</div>
 </body>
 </html>
+
+

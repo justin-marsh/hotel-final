@@ -15,6 +15,7 @@
 			    	th:each="customerData : ${CustomerDropdown}"
 			    	th:value="${customerData.customer.id}"
 					th:text="${customerData.display}"
+					th:selected="${booking.isCustomerSelected(customerData.customer.id)}"
 				></option>
 			</select>    
 			
@@ -24,11 +25,12 @@
 					th:each="room : ${existingRooms}"
 					th:value="${room.id}"
 					th:text="${room.roomNumber}"
+					th:selected="${booking.isRoomSelected(room.id)}"
 			    ></option>
 			</select>
 		    
-		    <div class="formfield"><label>Start date: </label> <input type="date" name="startDate" th:field="*{startDate}"></div>
-		    <div class="formfield"><label>End date: </label> <input type="date" name="endDate" th:field="*{endDate}"></div>
+		    <div class="formfield"><label>Start date: </label> <input type="date" name="startDate" th:field="*{startDate}" th:value="${booking.getStartDateAsString()}"></div>
+		    <div class="formfield"><label>End date: </label> <input type="date" name="endDate" th:field="*{endDate}" th:value="${booking.getEndDateAsString()}"></div>
 		
 		    <br/>
 		    <input type="submit" value="Add booking">
@@ -45,16 +47,8 @@
 					<div class="startDate">Start Date <span th:text="${booking.startDate}"></span></div>
 					<div class="endDate">End Date <span th:text="${booking.endDate}"></span></div>
 				</div>
-				
-					
-				</div>
 			</div>
 		</div>
-		<!-- <form th:action="@{/search}" method="get">
-			<label>Search for books by any word in title: </label> 
-			<input type="text" name="title"> 
-			<input type="submit" value="search for books">
-		</form> -->
 	</div>
 </body>
 </html>

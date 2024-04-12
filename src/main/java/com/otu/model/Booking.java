@@ -9,6 +9,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Entity
@@ -79,6 +80,7 @@ public class Booking {
 
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
+		this.customerId = customer.getId();
 	}
 
 	public Room getRoom() {
@@ -87,6 +89,7 @@ public class Booking {
 
 	public void setRoom(Room room) {
 		this.room = room;
+		this.roomId = room.getId();
 	}
 
 	public LocalDate getStartDate() {
@@ -99,6 +102,37 @@ public class Booking {
 
 	public LocalDate getEndDate() {
 		return endDate;
+	}
+	
+	public String isRoomSelected(long targetId) {
+		if(this.roomId == targetId) {
+			return "selected";
+		}
+		return "";
+	}
+	
+	public String isCustomerSelected(long targetId) {
+		if(this.customerId == targetId) {
+			return "selected";
+		}
+		return "";
+	}
+	
+	public String getStartDateAsString() {
+		if(this.startDate == null) {
+			return "";
+		}
+//		return "2000-01-01";
+		return this.startDate.toString();
+	}
+	
+	public String getEndDateAsString() {
+		if(this.endDate == null) {
+			return "";
+		}
+//		return "2000-01-01";
+		return this.endDate.toString();
+//		return this.endDate.format(DateTimeFormatter.ofPattern("uuuu-mm-dd"));
 	}
 
 	public void setEndDate(LocalDate endDate) {
