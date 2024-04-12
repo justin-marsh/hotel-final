@@ -177,3 +177,32 @@ header h1 {
 	font-weight: bold;
 	font-size: 1.5em;
 }
+
+
+
+table.customer-table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+
+table.customer-table th {
+    background-color: var(--LexaCol-bold);
+    color: white;
+    font-weight: bold;
+    padding: 8px;
+    border: var(--LexaCol-contrastAccent) 2px solid;
+}
+
+
+table.customer-table td {
+    padding: 8px;
+    border: 2px var(--LexaCol-bold) dashed;
+    border: var(--LexaCol-bold) 2px dashed;
+}
+
+
+table.customer-table tr{
+    background-color: var(--LexaCol-pale);
+}
+
