@@ -20,9 +20,10 @@ public class ProvidedServiceService {
 	public BookingService bService;
 
 	@Autowired
-	public ProvidedServiceService(ServiceRepository repo) {
+	public ProvidedServiceService(ServiceRepository repo, BookingService bService) {
 		super();
 		this.repo = repo;
+		this.bService = bService;
 	}
 
 	
