@@ -183,7 +183,7 @@ public class Booking {
 	}
 	
 	public String toDropDown() {
-		return Integer.toString(room.getRoomNumber()) + " - " + startDate; 
+		return "Room " + Integer.toString(room.getRoomNumber()) + " - " + startDate; 
 	}
 	
 }
