@@ -35,13 +35,13 @@ public class RoomController {
 
 		System.out.println(room);
 		
-		boolean roomCreated = false;
-		//boolean roomCreated = service.addRoom(room);		
+		//boolean roomCreated = false;
+		boolean roomCreated = service.addRoom(room);		
 		
 		if(roomCreated) {
-			model.addAttribute("addedRoomNumber", room.getRoomNumber());
+		  model.addAttribute("addedRoomNumber", room.getRoomNumber());
 		} else {
-			model.addAttribute("errorText", "Failed to add room");
+		  model.addAttribute("errorText", "Failed to add room");
 		}
 		
 		return this.rooms(model); // setup the rooms page

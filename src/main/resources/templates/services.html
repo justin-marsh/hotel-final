@@ -16,11 +16,34 @@
 			<br/>
 			<input type="submit" value="Add Service">
 		</form>
-		<!-- <form th:action="@{/search}" method="get">
-			<label>Search for services by any word in name: </label> 
-			<input type="text" name="name"> 
-			<input type="submit" value="search for service">
-		</form> -->
+		
+		
+		
+		
+		<!-- Display provided services in a grid -->
+		
+		<label for="booking-dropdown">Booking: </label>
+			<select id="booking-dropdown">
+			    <option th:each="booking : ${existingBookings}" th:value="${booking}">
+			        <span th:text="${booking.Number}"></span>
+			    </option>
+			</select>
+		
+		<div class="grid-container">
+			<div class="grid-item listing serviceListing" th:each="service : ${existingServices}">
+				<div class="listingInfo roomListingInfo">
+					<div class="name">Service Name <span th:text="${service.name}"></span></div>
+					
+					<div class="description">Service Description<span th:text="${service.description}"></span></div>
+					<div class="price">Service Price<span th:number="${service.price}"></span></div>
+					</div>
+				
+					
+				</div>
+			</div>
+		</div>
+		
+		
 	</div>
 </body>
 </html>
