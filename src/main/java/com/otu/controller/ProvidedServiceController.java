@@ -11,21 +11,25 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.otu.model.ProvidedService;
 import com.otu.service.ProvidedServiceService;
+import com.otu.service.BookingService;
 
 @Controller
 public class ProvidedServiceController {
 	ProvidedServiceService service;
+	BookingService bookingService;
 	
 	@Autowired
-	public ProvidedServiceController(ProvidedServiceService service) {
+	public ProvidedServiceController(ProvidedServiceService service, BookingService bookingService) {
 		super();
 		this.service = service;
+		this.bookingService = bookingService;
 	}
 
 	@GetMapping("/services")
 	public String services(Model model) {
 		model.addAttribute("service", new ProvidedService()); // empty obj for filling with data to add a new obj to repo
 		model.addAttribute("existingServices", service.getProvidedServices()); // list<Obj> of all objs in the repo
+		model.addAttribute("existingBookings", bookingService.getBookings()); // list<Obj> of all objs in the repo
 		
 		return "services";
 	}
@@ -33,7 +37,7 @@ public class ProvidedServiceController {
 	@PostMapping("/processAddService")
 	public String processAddService(ProvidedService providedService, Model model) {
 
-		System.out.println(providedService);
+		service.fillOutFields(providedService);
 		
 		boolean serviceCreated = service.addService(providedService);
 		
