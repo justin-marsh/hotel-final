@@ -15,19 +15,29 @@
 	
 			<br/>
 			<input type="submit" value="Add Service">
-		</form>
 		
 		
 		
 		
 		<!-- Display provided services in a grid -->
 		
-		<label for="booking-dropdown">Booking: </label>
-			<select id="booking-dropdown">
-			    <option th:each="booking : ${existingBookings}" th:value="${booking}">
-			        <span th:date="${booking.startDate}"></span>
-			    </option>
+			<label for="bookingId">Booking: </label>
+			<!-- <select name="bookingId" id="bookingId" th:field="*{bookingId}">
+			    <option 
+			    	th:each="booking : ${existingBookings}"
+			    	th:value="${booking.id}"
+					th:text="${booking.id}"
+				></option>
+			</select> -->
+			<select name="bookingId" id="bookingId" th:field="*{bookingId}">
+			    <option
+					th:each="booking : ${existingBookings}"
+					th:value="${booking.id}"
+					th:text="${booking.toDropDown()}"
+					
+			    ></option><!-- th:selected="${booking.isRoomSelected(room.id)}" -->
 			</select>
+		</form>
 		
 		<div class="grid-container">
 			<div class="grid-item listing serviceListing" th:each="service : ${existingServices}">
