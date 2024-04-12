@@ -91,6 +91,14 @@ public class Booking {
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
+	
+	public long getCustomerId() {
+		return customerId;
+	}
+
+	public void setCustomerId(long customerId) {
+		this.customerId = customerId;
+	}
 
 	public Room getRoom() {
 		return room;
@@ -98,6 +106,14 @@ public class Booking {
 
 	public void setRoom(Room room) {
 		this.room = room;
+	}
+	
+	public long getRoomId() {
+		return roomId;
+	}
+
+	public void setRoom(long roomId) {
+		this.roomId = roomId;
 	}
 
 	public LocalDate getStartDate() {

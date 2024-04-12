@@ -81,5 +81,11 @@ public class BookingService {
 		return repo.existsById(booking.getId());
 	}
 
+	public Booking fillOutFields(Booking booking) {
+		booking.setCustomer(cService.findById(booking.getCustomerId()).get(0));
+		booking.setRoom(rService.findById(booking.getRoomId()).get(0));
+		
+		return booking;
+	}
 	
 }

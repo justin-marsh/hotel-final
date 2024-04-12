@@ -22,4 +22,7 @@ public interface CustomerRepository extends JpaRepository<Customer, Long>{
 	
 	@Query("select c from Customer c where c.phoneNumber = :phoneNumber")
 	List<Customer> findByPhoneNumber(@Param("phoneNumber") String phoneNumber);
+	
+	@Query("select c from Customer c where c.id = :id")
+	List<Customer> findById(@Param("id") long id);
 }

@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.otu.model.Booking;
 import com.otu.model.Customer;
 import com.otu.repository.CustomerRepository;
 
@@ -85,4 +86,10 @@ public class CustomerService {
 		return repo.findByEmail(email);
 	}
 	
+	public List<Customer> findById(long id) {
+		return repo.findById(id);
+	}
+
+
+
 }

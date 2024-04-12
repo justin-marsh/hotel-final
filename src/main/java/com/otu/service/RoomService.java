@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.otu.model.Customer;
 import com.otu.model.Room;
 import com.otu.repository.RoomRepository;
 
@@ -42,6 +43,10 @@ public class RoomService {
 	
 	public boolean validateRoom(Room room) {
 		return repo.existsById(room.getId());
+	}
+	
+	public List<Room> findById(long id) {
+		return repo.findById(id);
 	}
 
 	
