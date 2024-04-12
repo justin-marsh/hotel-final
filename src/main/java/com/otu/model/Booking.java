@@ -29,7 +29,7 @@ public class Booking {
 	private long roomId;
 	private LocalDate startDate;
 	private LocalDate endDate;
-	
+
 	@OneToMany(mappedBy = "booking")
 	private List<ProvidedService> services;
 	
@@ -49,31 +49,20 @@ public class Booking {
 		this.endDate = endDate;
 	}
 	
-	public boolean createCustomer() {
-//			if(!customerIdIsValid(this.customerId)) {
-//				return false;
-//			}
-//			this.customer = customerIdToCustomer(this.customerId);
-		// or 
-//			this.customer = customerIdToCustomer(this.customerId);
-//			if(this.customer == null) {
-//				return false;
-//			}
-		
-		return true;
+	public long getCustomerId() {
+		return this.customerId;
 	}
 	
-	public boolean createRoom() {
-//			if(!roomIdIsValid(this.roomId)) {
-//				return false;
-//			}
-//			this.room = roomIdToRoom(this.roomId);
-		// or
-//			this.room = roomIdToRoom(this.roomId);
-//			if(this.room == null) {
-//				return false;
-//			}
-		return true;
+	public long getRoomId() {
+		return this.roomId;
+	}
+	
+	public void setCustomerId(long customerId) {
+		this.customerId = customerId;
+	}
+	
+	public void setRoomId(long roomId) {
+		this.roomId = roomId;
 	}
 
 	public long getId() {
@@ -91,14 +80,6 @@ public class Booking {
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
-	
-	public long getCustomerId() {
-		return customerId;
-	}
-
-	public void setCustomerId(long customerId) {
-		this.customerId = customerId;
-	}
 
 	public Room getRoom() {
 		return room;
@@ -106,14 +87,6 @@ public class Booking {
 
 	public void setRoom(Room room) {
 		this.room = room;
-	}
-	
-	public long getRoomId() {
-		return roomId;
-	}
-
-	public void setRoom(long roomId) {
-		this.roomId = roomId;
 	}
 
 	public LocalDate getStartDate() {
