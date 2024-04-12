@@ -208,3 +208,15 @@ table.customer-table tr{
     
 }
 
+nav {
+    text-align: right;
+    font-size: 16px;
+    font-weight: bold;
+    
+}
+
+nav a {
+	text-decoration: none;
+    color: black;
+}
+
