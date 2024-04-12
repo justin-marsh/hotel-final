@@ -40,19 +40,20 @@ public class BookingController {
 		//List<CustomerDropdown> temp = service.cService.getDropDown();
 		
 		
-		model.addAttribute("CustomerDropdown", service.cService.getDropDown()); // list<CustomerDropdowns> for use in drop downs
+		model.addAttribute("CustomerDropdown", customerService.getDropDown()); // list<CustomerDropdowns> for use in drop downs
 		model.addAttribute("existingRooms", roomService.getRooms()); // list<Obj> of all objs in the repo
 		
 		
 		return "bookings";
 	}
 	
-	@PostMapping("/processAddBooking")
-	public String processAddBooking(Booking booking, Model model) {
-
-		System.out.println(booking);
+	@PostMapping("/bookings")
+	public String bookings(Booking booking, Model model) {
 		
-		boolean bookingCreated = service.addBooking(booking);
+		service.fillOutFields(booking);
+		
+		boolean bookingCreated = false;
+//		boolean bookingCreated = service.addBooking(booking);
 		
 		model.addAttribute("bookingAddedSuccessfully", bookingCreated); // boolean for error text in the template
 		
@@ -60,7 +61,7 @@ public class BookingController {
 //			model.addAttribute("addedBooking?????", booking.get????()); //?
 //		}
 		
-		return "redirect:/bookings";
+		return this.bookings(model);
 	}
 
 
