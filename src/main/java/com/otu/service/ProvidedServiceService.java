@@ -7,14 +7,17 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.otu.model.Booking;
 import com.otu.model.Customer;
 import com.otu.model.ProvidedService;
+import com.otu.repository.BookingRepository;
 import com.otu.repository.ServiceRepository;
 
 
 @Service
 public class ProvidedServiceService {
 	ServiceRepository repo;
+	public BookingService bService;
 
 	@Autowired
 	public ProvidedServiceService(ServiceRepository repo) {
@@ -49,6 +52,13 @@ public class ProvidedServiceService {
 	
 	public boolean validateService(ProvidedService service) {
 		return repo.existsById(service.getId());
+	}
+	
+	public ProvidedService fillOutFields(ProvidedService proserv) {
+		proserv.setBooking(bService.findById(proserv.getBookingId()).get(0));
+		
+		
+		return proserv;
 	}
 
 	

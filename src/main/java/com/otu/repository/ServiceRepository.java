@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import com.otu.model.ProvidedService;
+import com.otu.model.Room;
 
 public interface ServiceRepository extends JpaRepository<ProvidedService, Long>{
 	
@@ -15,5 +16,8 @@ public interface ServiceRepository extends JpaRepository<ProvidedService, Long>{
 	
 	@Query("select s from ProvidedService s where upper(s.name) like concat('%', upper(:name), '%')")
 	List<ProvidedService> findByName(@Param("name") String name);
+	
+	@Query("select s from ProvidedService s where s.id = :id")
+	List<ProvidedService> findById(@Param("id") long id);
 	
 }

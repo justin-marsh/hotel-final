@@ -88,4 +88,8 @@ public class BookingService {
 		return booking;
 	}
 	
+	public List<Booking> findById(long id) {
+		return repo.findById(id);
+	}
+	
 }

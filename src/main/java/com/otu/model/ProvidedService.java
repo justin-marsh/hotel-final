@@ -20,7 +20,7 @@ public class ProvidedService {
 	@JoinTable(name = "bookings_services", joinColumns = { @JoinColumn(name = "service_id") }, inverseJoinColumns = {
             @JoinColumn(name = "booking_id") })
 	private Booking booking;
-	
+	private long bookingId;
 	public ProvidedService() {
 		super();
 	}
@@ -40,6 +40,14 @@ public class ProvidedService {
 	}
 
 	public void setId(long id) {
+		this.id = id;
+	}
+	
+	public long getBookingId() {
+		return id;
+	}
+
+	public void setBookingId(long id) {
 		this.id = id;
 	}
 

@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 
 import com.otu.model.Booking;
 import com.otu.model.Customer;
+import com.otu.model.ProvidedService;
 import com.otu.model.Room;
 
 public interface BookingRepository extends JpaRepository<Booking, Long>{
@@ -22,4 +23,7 @@ public interface BookingRepository extends JpaRepository<Booking, Long>{
 	
 	@Query("select b from Booking b where b.customer = :customer and b.room = :room")
 	List<Booking> findByCustomerAndRoom(@Param ("customer") Customer customer, @Param("room") Room room);
+	
+	@Query("select b from Booking b where b.id = :id")
+	List<Booking> findById(@Param("id") long id);
 }
